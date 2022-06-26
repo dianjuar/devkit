@@ -2519,22 +2519,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/webpack-dev-server@npm:^1.7.0":
-  version: 1.8.4
-  resolution: "@cypress/webpack-dev-server@npm:1.8.4"
-  dependencies:
-    debug: ^4.3.2
-    lodash: ^4.17.21
-    semver: ^7.3.4
-    webpack-merge: ^5.4.0
-  peerDependencies:
-    html-webpack-plugin: ">=4"
-    webpack: ">=4"
-    webpack-dev-server: ">=3.0.0"
-  checksum: cfe2638b95a15cbe0271478c90062ff891cd2aad4b8cf23efb9d2c1d1e118c62db267b6b9a2953164ad3f5e735a5fa0a8d4811b87e8cce21b841ffec8c6464f7
-  languageName: node
-  linkType: hard
-
 "@cypress/webpack-dev-server@npm:^2.0.0":
   version: 2.0.0
   resolution: "@cypress/webpack-dev-server@npm:2.0.0"
@@ -3206,7 +3190,7 @@ __metadata:
     "@angular/router": 14.0.3
     "@commitlint/cli": ^17.0.0
     "@commitlint/config-angular": ^17.0.0
-    "@cypress/webpack-dev-server": ^1.7.0
+    "@cypress/webpack-dev-server": ^2.0.0
     "@jscutlery/semver": ^2.21.4
     "@nrwl/angular": 14.3.6
     "@nrwl/cli": 14.3.6
