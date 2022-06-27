@@ -8,13 +8,17 @@ runs:
   steps:
     - name: Lint
       shell: bash
-      run: yarn nx affected --base=last-release --target=lint
+      run: yarn nx affected --all --target=lint
+      # run: yarn nx affected --base=last-release --target=lint
     - name: Build
       shell: bash
-      run: yarn nx affected --base=last-release --target=build
+      run: yarn nx affected --all --target=build
+      # run: yarn nx affected --base=last-release --target=build
     - name: Test
       shell: bash
-      run: yarn nx affected --base=last-release --target=test
+      run: yarn nx affected --all --target=test
+      # run: yarn nx affected --base=last-release --target=test
     - name: E2E
       shell: bash
-      run: yarn nx affected --base=last-release --target=e2e --parallel=1
+      run: yarn nx affected --all --target=e2e --parallel=1
+      # run: yarn nx affected --base=last-release --target=e2e --parallel=1
