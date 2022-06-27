@@ -1,0 +1,72 @@
+name: Lint, Build, Unit Test, E2E Test
+
+on:
+  workflow_call:
+    # inputs:
+    #   node-versions:
+    #     type: string
+    #     default: '[14, 16, 18]'
+    #     required: false
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Lint
+        shell: bash
+        run: yarn nx affected --all --target=lint
+        # run: yarn nx affected --base=last-release --target=lint
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build
+        shell: bash
+        run: yarn nx affected --all --target=build
+        # run: yarn nx affected --base=last-release --target=build
+
+  unit-test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          node_version: ${{ matrix.node_version }}
+
+      - name: Tests
+        shell: bash
+        run: yarn nx affected --all --target=test
+        # run: yarn nx affected --base=last-release --target=test
+
+  e2e:
+    name: E2E
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          node_version: ${{ matrix.node_version }}
+
+      - name: e2e
+        shell: bash
+        run: yarn nx affected --all --target=test --parallel=1
+        # run: yarn nx affected --base=last-release --target=e2e --parallel=1

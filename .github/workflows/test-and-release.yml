@@ -23,12 +23,15 @@ jobs:
       - name: Test
         uses: ./.github/actions/test
 
+  test-separate:
+    uses: ./.github/workflows/test-2.0.yml
+
   release:
     runs-on: ubuntu-latest
 
     if: github.ref == 'refs/heads/main'
 
-    needs: [test]
+    needs: [test, test-separate]
 
     steps:
       - uses: actions/checkout@v3
